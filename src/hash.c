@@ -20,7 +20,8 @@ hash_t* hash_create() {
 
 void hash_destroy(hash_t *hash) {
   for(int i = 0; i < hash->table_size; i++) {
-    list_destroy((hash->table)[i]);
+    if ((hash->table)[i] != NULL)
+      list_destroy((hash->table)[i]);
   }
   free(hash);
 }
@@ -57,8 +58,8 @@ void hash_delete_value_for_key(hash_t *hash, const char *key)
 {
   int table_index = hash_index_for_key(hash, key);
 
-  list_t **list = &((hash->table)[table_index]);
-  list_t *key_node = list_find_by_key(*list, key);
+  list_t *list = ((hash->table)[table_index]);
+  list_t *key_node = list_find_by_key(list, key);
   if (key_node != NULL)
     list_remove(key_node);
 
@@ -70,6 +71,5 @@ void hash_print(hash_t *hash) {
       printf("Table index %d: \n", i);  
       list_print(hash->table[i]);
     }
-  }
-    
+  }   
 }
