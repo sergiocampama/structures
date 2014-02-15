@@ -65,6 +65,11 @@ void hash_delete_value_for_key(hash_t *hash, const char *key)
 }
 
 void hash_print(hash_t *hash) {
-  for (int i = 0; i < hash->table_size; i++) 
-    printf("index %d: value: %p\n", i, hash->table[i]);
+  for (int i = 0; i < hash->table_size; i++) {
+    if (hash->table[i] != NULL) {
+      printf("Table index %d: \n", i);  
+      list_print(hash->table[i]);
+    }
+  }
+    
 }

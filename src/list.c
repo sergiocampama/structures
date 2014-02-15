@@ -58,10 +58,12 @@ list_t* list_find_by_key(list_t *list, const char *key)
 }
 
 void list_print(list_t *list) {
-  int i = 0;
+  int i = 1;
   while (list != NULL) {
     if (list->key != NULL) 
       printf("Node %d: Key: %s => Value: %d\n", i++, list->key, list->value);
+    else
+      printf("Node %d: Sentinel\n", i++);
     list = list->next;
   }
 }
