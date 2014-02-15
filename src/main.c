@@ -12,6 +12,7 @@ int main() {
   hash_add_value_for_key(hash, "hola", 20);
   hash_add_value_for_key(hash, "caca", 374);
   hash_add_value_for_key(hash, "peo", 617);
+
   int value = hash_get_value_for_key(hash, "hola");
   printf("Value saved was %d\n", value);
   value = hash_get_value_for_key(hash, "caca");
@@ -28,8 +29,8 @@ int main() {
   hash_destroy(hash);
 
   list_t *start = list_create("0", 0);
-  list_add(&start, list_create("1", 1));
-  list_add(&start, list_create("2", 2));
+  list_add(start, list_create("1", 1));
+  list_add(start, list_create("2", 2));
 
   list_print(start);
   list_destroy(start);

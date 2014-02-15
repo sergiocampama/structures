@@ -37,7 +37,10 @@ int hash_index_for_key(hash_t *hash, const char *key) {
 void hash_add_value_for_key(hash_t *hash, const char *key, int value) {
   int table_index = hash_index_for_key(hash, key);
 
-  list_add(&((hash->table)[table_index]), list_create(key, value));
+  if ((hash->table)[table_index] == NULL)
+    (hash->table)[table_index] = list_create(NULL, 0);
+
+  list_add((hash->table)[table_index], list_create(key, value));
 }
 
 int hash_get_value_for_key(hash_t *hash, const char *key) {
@@ -54,8 +57,8 @@ void hash_delete_value_for_key(hash_t *hash, const char *key)
 {
   int table_index = hash_index_for_key(hash, key);
 
-  list_t *list = (hash->table)[table_index];
-  list_t *key_node = list_find_by_key(list, key);
+  list_t **list = &((hash->table)[table_index]);
+  list_t *key_node = list_find_by_key(*list, key);
   if (key_node != NULL)
     list_remove(key_node);
 
