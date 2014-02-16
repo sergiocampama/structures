@@ -13,6 +13,31 @@ void TestHashCreate(CuTest* tc)
 {
   hash_t *hash = hash_create();
   CuAssert(tc, "hash_create does not return NULL", NULL != hash);
+  hash_destroy(hash);
+}
+
+void TestHashAddValue(CuTest* tc)
+{
+  hash_t *hash = hash_create();
+  int number = 20;
+  hash_add_value_for_key(hash, "test", &number, sizeof(number));
+  void *value = hash_get_value_for_key(hash, "test");
+
+  CuAssert(tc, "hash_get_value_for_key does not return NULL for valid key", value != NULL);
+  CuAssert(tc, "hash_get_value_for_key returns correct value", *((int *)value) == 20);
+  hash_destroy(hash);
+}
+
+void TestHashRemoveValue(CuTest* tc)
+{
+  hash_t *hash = hash_create();
+  int number = 20;
+  hash_add_value_for_key(hash, "test", &number, sizeof(number));
+  hash_delete_value_for_key(hash, "test");
+  void *value = hash_get_value_for_key(hash, "test");
+
+  CuAssert(tc, "hash_get_value_for_key does return NULL for removed key", value == NULL);
+  hash_destroy(hash);
 }
 
 CuSuite* getTestSuite(void)
@@ -20,34 +45,8 @@ CuSuite* getTestSuite(void)
   CuSuite* suite = CuSuiteNew();
 
   SUITE_ADD_TEST(suite, TestHashCreate);
-  /*SUITE_ADD_TEST(suite, TestCuStrCopy);
-  SUITE_ADD_TEST(suite, TestFail);
-  SUITE_ADD_TEST(suite, TestAssertStrEquals);
-  SUITE_ADD_TEST(suite, TestAssertStrEquals_NULL);
-  SUITE_ADD_TEST(suite, TestAssertStrEquals_FailStrNULL);
-  SUITE_ADD_TEST(suite, TestAssertStrEquals_FailNULLStr);
-  SUITE_ADD_TEST(suite, TestAssertIntEquals);
-  SUITE_ADD_TEST(suite, TestAssertDblEquals);
-
-  SUITE_ADD_TEST(suite, TestCuTestNew);
-  SUITE_ADD_TEST(suite, TestCuTestInit);
-  SUITE_ADD_TEST(suite, TestCuAssert);
-  SUITE_ADD_TEST(suite, TestCuAssertPtrEquals_Success);
-  SUITE_ADD_TEST(suite, TestCuAssertPtrEquals_Failure);
-  SUITE_ADD_TEST(suite, TestCuAssertPtrNotNull_Success);
-  SUITE_ADD_TEST(suite, TestCuAssertPtrNotNull_Failure);
-  SUITE_ADD_TEST(suite, TestCuTestRun);
-
-  SUITE_ADD_TEST(suite, TestCuSuiteInit);
-  SUITE_ADD_TEST(suite, TestCuSuiteNew);
-  SUITE_ADD_TEST(suite, TestCuSuiteAddTest);
-  SUITE_ADD_TEST(suite, TestCuSuiteAddSuite);
-  SUITE_ADD_TEST(suite, TestCuSuiteRun);
-  SUITE_ADD_TEST(suite, TestCuSuiteSummary);
-  SUITE_ADD_TEST(suite, TestCuSuiteDetails_SingleFail);
-  SUITE_ADD_TEST(suite, TestCuSuiteDetails_SinglePass);
-  SUITE_ADD_TEST(suite, TestCuSuiteDetails_MultiplePasses);
-  SUITE_ADD_TEST(suite, TestCuSuiteDetails_MultipleFails);*/
+  SUITE_ADD_TEST(suite, TestHashAddValue);
+  SUITE_ADD_TEST(suite, TestHashRemoveValue);
 
   return suite;
 }
