@@ -45,11 +45,15 @@ void TestHashAddAndRemoveValue(CuTest* tc)
   hash_t *hash = hash_create();
   int number = 20;
   hash_add_value_for_key(hash, "test", &number, sizeof(number));
+  int int_value1 = *((int *)hash_get_value_for_key(hash, "test"));
   number = 40;
   hash_add_value_for_key(hash, "test", &number, sizeof(number));
+  int int_value2 = *((int *)hash_get_value_for_key(hash, "test"));
   hash_delete_value_for_key(hash, "test");
   void *value = hash_get_value_for_key(hash, "test");
 
+  CuAssert(tc, "hash_add_value_for_key sets correct value", int_value1 == 20);
+  CuAssert(tc, "hash_get_value_for_key updates correct value", int_value2 == 40);
   CuAssert(tc, "hash_get_value_for_key does return NULL for removed key", value == NULL);
   hash_destroy(hash);
 }
