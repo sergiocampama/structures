@@ -13,7 +13,7 @@ void hash_print(hash_t *hash)
 
 void list_print(list_t *list)
 {
-  int i = 1;
+  int i = 0;
   while (list != NULL) {
     if (list->key != NULL) 
       printf("Node %d: Key: %s => Value: %d\n", i++, list->key, *((int *)list->value));

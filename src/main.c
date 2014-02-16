@@ -38,11 +38,12 @@ int main() {
   second = 1;
   third = 2;
 
-  list_t *start = list_create("0", &first, sizeof(first));
+  list_t *start = list_create(NULL, NULL, 0);
+  list_add(start, list_create("0", &first, sizeof(first)));
   list_add(start, list_create("1", &second, sizeof(second)));
   list_add(start, list_create("2", &third, sizeof(third)));
 
-  // list_print(start);
+  list_print(start);
 
   list_destroy(start);
 
