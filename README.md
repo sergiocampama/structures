@@ -13,7 +13,7 @@ Hash
 
 The hash structure solves collisions by chaining, with the hash table being pointers to linked lists. This linked list starts with a sentinel for easier support of removing nodes.
 
-It supports adding and removing integer values using string keys. 
+It supports adding and removing void pointer values (everything) using string keys, copying the value into new memory. 
 
 Usage
 =====

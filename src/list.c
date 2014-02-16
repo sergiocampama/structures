@@ -4,16 +4,22 @@
 
 #include "list.h"
 
-list_t* list_create(const char *key, int value)
+list_t* list_create(const char *key, void *value, int size)
 {
   list_t *new_list = malloc(sizeof(list_t));
   new_list->next = NULL;
   new_list->prev = NULL;
+  new_list->key = NULL;
+  new_list->value = NULL;
+
   if (key != NULL) {
     new_list->key = malloc(strlen(key) + 1);
     strcpy(new_list->key, key);
   }
-  new_list->value = value;
+  if (value != NULL) {
+    new_list->value = malloc(size);
+    memcpy(new_list->value, value, size);
+  }
 
   return new_list;
 }
@@ -23,7 +29,10 @@ void list_destroy(list_t *list)
   while (list != NULL) {
     list_t *old_list = list;
     list = list->next;
-    free(old_list->key);
+    if (old_list->key != NULL)
+      free(old_list->key);
+    if (old_list->value != NULL)
+      free(old_list->value);
     free(old_list);
   }
 }
@@ -61,7 +70,7 @@ void list_print(list_t *list) {
   int i = 1;
   while (list != NULL) {
     if (list->key != NULL) 
-      printf("Node %d: Key: %s => Value: %d\n", i++, list->key, list->value);
+      printf("Node %d: Key: %s => Value: %d\n", i++, list->key, *((int *)list->value));
     else
       printf("Node %d: Sentinel\n", i++);
     list = list->next;

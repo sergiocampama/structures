@@ -18,8 +18,8 @@ typedef struct _hash_t {
 hash_t* hash_create();
 void hash_destroy();
 
-void hash_add_value_for_key(hash_t *hash, const char *key, int value);
-int hash_get_value_for_key(hash_t *hash, const char *key);
+void hash_add_value_for_key(hash_t *hash, const char *key, void *value, int size);
+void* hash_get_value_for_key(hash_t *hash, const char *key);
 void hash_delete_value_for_key(hash_t *hash, const char *key);
 
 void hash_print(hash_t *hash);
