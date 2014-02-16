@@ -17,7 +17,6 @@ void run_tests() {
 }
 
 int main() {
-  puts("Starting tests:");
   run_tests();
   return 0;
 }
