@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -62,14 +61,4 @@ void hash_delete_value_for_key(hash_t *hash, const char *key)
   list_t *key_node = list_find_by_key(list, key);
   if (key_node != NULL)
     list_remove(key_node);
-
-}
-
-void hash_print(hash_t *hash) {
-  for (int i = 0; i < hash->table_size; i++) {
-    if (hash->table[i] != NULL) {
-      printf("Table index %d: \n", i);  
-      list_print(hash->table[i]);
-    }
-  }   
 }

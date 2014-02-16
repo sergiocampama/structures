@@ -4,6 +4,7 @@
 
 #include "hash.h"
 #include "list.h"
+#include "printer.h"
 
 int main() {
   hash_t *hash = hash_create();
