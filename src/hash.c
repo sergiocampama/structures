@@ -34,13 +34,19 @@ int hash_index_for_key(hash_t *hash, const char *key) {
   return ((hash->param_a * converted_key + hash->param_b) % hash->param_p) % hash->table_size;
 }
 
-void hash_add_value_for_key(hash_t *hash, const char *key, void *value, int size) {
+void hash_add_value_for_key(hash_t *hash, const char *key, void *value, size_t size) {
   int table_index = hash_index_for_key(hash, key);
 
   if ((hash->table)[table_index] == NULL)
     (hash->table)[table_index] = list_create(NULL, NULL, 0);
 
-  list_add((hash->table)[table_index], list_create(key, value, size));
+  list_t *list = ((hash->table)[table_index]);
+  list_t *key_node = list_find_by_key(list, key);
+
+  if (key_node == NULL)
+    list_add((hash->table)[table_index], list_create(key, value, size));
+  else
+    list_update(key_node, value, size);
 }
 
 void* hash_get_value_for_key(hash_t *hash, const char *key) {

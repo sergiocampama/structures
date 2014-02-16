@@ -40,6 +40,20 @@ void TestHashRemoveValue(CuTest* tc)
   hash_destroy(hash);
 }
 
+void TestHashAddAndRemoveValue(CuTest* tc)
+{
+  hash_t *hash = hash_create();
+  int number = 20;
+  hash_add_value_for_key(hash, "test", &number, sizeof(number));
+  number = 40;
+  hash_add_value_for_key(hash, "test", &number, sizeof(number));
+  hash_delete_value_for_key(hash, "test");
+  void *value = hash_get_value_for_key(hash, "test");
+
+  CuAssert(tc, "hash_get_value_for_key does return NULL for removed key", value == NULL);
+  hash_destroy(hash);
+}
+
 CuSuite* getTestSuite(void)
 {
   CuSuite* suite = CuSuiteNew();
@@ -47,6 +61,7 @@ CuSuite* getTestSuite(void)
   SUITE_ADD_TEST(suite, TestHashCreate);
   SUITE_ADD_TEST(suite, TestHashAddValue);
   SUITE_ADD_TEST(suite, TestHashRemoveValue);
+  SUITE_ADD_TEST(suite, TestHashAddAndRemoveValue);
 
   return suite;
 }

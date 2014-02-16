@@ -3,7 +3,7 @@
 
 #include "list.h"
 
-list_t* list_create(const char *key, void *value, int size)
+list_t* list_create(const char *key, void *value, size_t size)
 {
   list_t *new_list = malloc(sizeof(list_t));
   new_list->next = NULL;
@@ -21,6 +21,17 @@ list_t* list_create(const char *key, void *value, int size)
   }
 
   return new_list;
+}
+
+void list_update(list_t *list, void *value, size_t size)
+{
+  if (list->value != NULL) 
+    free(list->value);
+
+  if (value != NULL) {
+    list->value = malloc(size);
+    memcpy(list->value, value, size);
+  }
 }
 
 void list_destroy(list_t *list)
