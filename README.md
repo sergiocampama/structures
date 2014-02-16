@@ -18,4 +18,4 @@ It supports adding and removing void pointer values (everything) using string ke
 Usage
 =====
 
-To compile just `make` and then run `bin/structures`
+To test just `make`.
