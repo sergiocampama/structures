@@ -1,7 +1,7 @@
 IDIR=include
 SDIR=src
 ODIR=obj
-TODIR=obj
+TODIR=$(ODIR)
 BDIR=bin
 TDIR=test
 
@@ -18,9 +18,6 @@ OBJ=$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 TOBJ=$(patsubst $(TDIR)/%.c, $(TODIR)/%.o, $(TSRC))
 
 all: directories test
-
-$(BDIR)/structures: $(OBJ)
-	@$(CC) -o $@ $^ $(CFLAGS)
 
 $(ODIR):
 	@$(MKDIR_P) $@
