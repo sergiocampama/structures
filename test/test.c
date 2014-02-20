@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include "CuTest.h"
 
-CuSuite *getTestSuite();
+CuSuite *getHashTestSuite();
+CuSuite *getTrieTreeTestSuite();
 
 void run_tests() {
   CuString *output = CuStringNew();
   CuSuite *suite = CuSuiteNew();
 
-  CuSuiteAddSuite(suite, getTestSuite());
+  CuSuiteAddSuite(suite, getHashTestSuite());
+  CuSuiteAddSuite(suite, getTrieTreeTestSuite());
   
   CuSuiteRun(suite);
   CuSuiteSummary(suite, output);

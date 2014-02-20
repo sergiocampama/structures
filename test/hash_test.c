@@ -7,7 +7,6 @@
 #include "CuTest.h"
 
 #include "hash.h"
-#include "list.h"
 
 void TestHashCreate(CuTest* tc)
 {
@@ -58,7 +57,7 @@ void TestHashAddAndRemoveValue(CuTest* tc)
   hash_destroy(hash);
 }
 
-CuSuite* getTestSuite(void)
+CuSuite* getHashTestSuite(void)
 {
   CuSuite* suite = CuSuiteNew();
 
