@@ -1,7 +1,11 @@
 structures
 ==========
 
-This is a collection of basic structures for academic purposes. For now, it features a doubly linked list and a hash with chaining and universal hashing function.
+This is a collection of basic structures for academic purposes. These are the implemented ones right now:
+
+1. Linked List
+2. Hash
+3. Trie Tree
 
 Linked List
 -----------
@@ -14,6 +18,11 @@ Hash
 The hash structure solves collisions by chaining, with the hash table being pointers to linked lists. This linked list starts with a sentinel for easier support of removing nodes.
 
 It supports adding and removing void pointer values (everything) using string keys, copying the value into new memory. 
+
+Trie Tree
+---------
+
+The trie tree structure works very much like a hash, but the storage mechanism is more closely related to a tree. It supports void pointer values as well.
 
 Usage
 =====
