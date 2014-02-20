@@ -15,7 +15,7 @@ list_t* list_create(const char *key, void *value, size_t size)
     new_list->key = malloc(strlen(key) + 1);
     strcpy(new_list->key, key);
   }
-  if (value != NULL) {
+  if (value != NULL && size > 0) {
     new_list->value = malloc(size);
     memcpy(new_list->value, value, size);
   }
