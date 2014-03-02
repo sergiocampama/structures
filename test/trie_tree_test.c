@@ -54,7 +54,7 @@ void TestTrieTreeAddSubKeys(CuTest* tc)
   trie_tree_destroy(trie);
 }
 
-CuSuite* getTrieTreeTestSuite(void)
+CuSuite* getTrieTreeTestSuite()
 {
   CuSuite* suite = CuSuiteNew();
 

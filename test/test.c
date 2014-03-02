@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "CuTest.h"
 
-CuSuite *getHashTestSuite();
-CuSuite *getTrieTreeTestSuite();
+CuSuite* getHashTestSuite();
+CuSuite* getTrieTreeTestSuite();
+CuSuite* getBinaryTreeTestSuite();
 
 void run_tests() {
   CuString *output = CuStringNew();
@@ -10,6 +11,7 @@ void run_tests() {
 
   CuSuiteAddSuite(suite, getHashTestSuite());
   CuSuiteAddSuite(suite, getTrieTreeTestSuite());
+  CuSuiteAddSuite(suite, getBinaryTreeTestSuite());
   
   CuSuiteRun(suite);
   CuSuiteSummary(suite, output);

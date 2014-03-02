@@ -57,7 +57,7 @@ void TestHashAddAndRemoveValue(CuTest* tc)
   hash_destroy(hash);
 }
 
-CuSuite* getHashTestSuite(void)
+CuSuite* getHashTestSuite()
 {
   CuSuite* suite = CuSuiteNew();
 

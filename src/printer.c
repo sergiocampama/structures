@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "printer.h"
 
-void hash_print(hash_t *hash)
-{
+void hash_print(hash_t *hash) {
   for (int i = 0; i < hash->table_size; i++) {
     if (hash->table[i] != NULL) {
       printf("Table index %d: \n", i);  
@@ -11,8 +10,7 @@ void hash_print(hash_t *hash)
   }
 }
 
-void list_print(list_t *list)
-{
+void list_print(list_t *list) {
   int i = 0;
   while (list != NULL) {
     if (list->key != NULL) 
@@ -21,4 +19,8 @@ void list_print(list_t *list)
       printf("Node %d: Sentinel\n", i++);
     list = list->next;
   }
+}
+
+void binary_tree_print(binary_tree_t *tree) {
+
 }
