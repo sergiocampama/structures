@@ -55,6 +55,19 @@ void binary_tree_add_value_for_key(binary_tree_t *tree, int key, void *value, si
   }
 }
 
+binary_tree_node_t* binary_tree_get_node_for_key(binary_tree_t *tree, int key) {
+  binary_tree_node_t *node = tree->root;
+
+  while (node != NULL && node->key != key) {
+    if (key > node->key)
+      node = node->right;
+    else if (key < node->key)
+      node = node->left;
+  }
+  
+  return node;
+}
+
 void binary_tree_delete_node(binary_tree_t *tree, binary_tree_node_t *node) {
 
 }
