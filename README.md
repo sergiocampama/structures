@@ -1,5 +1,7 @@
-structures
+structures 
 ==========
+
+[![Build Status](https://travis-ci.org/sergiocampama/structures.png?branch=master)](https://travis-ci.org/sergiocampama/structures)
 
 This is a collection of basic structures for academic purposes. These are the implemented ones right now:
 
