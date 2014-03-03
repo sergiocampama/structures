@@ -17,7 +17,7 @@ TSRC=$(wildcard $(TDIR)/*.c)
 OBJ=$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 TOBJ=$(patsubst $(TDIR)/%.c, $(TODIR)/%.o, $(TSRC))
 
-all: directories test
+all: directories build
 
 $(ODIR):
 	@$(MKDIR_P) $@
@@ -40,8 +40,12 @@ clean:
 
 directories: $(ODIR) $(BDIR)
 
-test: directories $(BDIR)/run_tests
-	@$(BDIR)/run_tests
+build: directories $(BDIR)/run_tests
 
 $(BDIR)/run_tests: $(OBJ) $(TOBJ)
 	@$(CC) -o $@ $^ $(CFLAGS) $(LFLAGS)
+
+.PHONY: test
+
+test:
+	@$(BDIR)/run_tests

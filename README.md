@@ -33,4 +33,4 @@ The binary search tree supports adding and deleting nodes, and finding by key, s
 Usage
 =====
 
-To test just `make`.
+To test just `make && make test`.
