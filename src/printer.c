@@ -2,7 +2,8 @@
 #include "printer.h"
 
 void hash_print(hash_t *hash) {
-  for (int i = 0; i < hash->table_size; i++) {
+  int i = 0;
+  for (i; i < hash->table_size; i++) {
     if (hash->table[i] != NULL) {
       printf("Table index %d: \n", i);  
       list_print(hash->table[i]);

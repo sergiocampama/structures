@@ -11,14 +11,16 @@ hash_t* hash_create() {
   hash->param_a = (rand() % (hash->param_p - 2)) + 1;
   hash->param_b = rand() % (hash->param_p - 1);
 
-  for (int i = 0; i < hash->table_size; i++) 
+  int i = 0;
+  for (i; i < hash->table_size; i++) 
     hash->table[i] = NULL;
 
   return hash;
 }
 
 void hash_destroy(hash_t *hash) {
-  for(int i = 0; i < hash->table_size; i++) {
+  int i = 0;
+  for(i; i < hash->table_size; i++) {
     if ((hash->table)[i] != NULL)
       list_destroy((hash->table)[i]);
   }
@@ -28,7 +30,8 @@ void hash_destroy(hash_t *hash) {
 int hash_index_for_key(hash_t *hash, const char *key) {
   int length = strlen(key);
   int converted_key = 0;
-  for (int i = 0; i < length; i++)
+  int i = 0;
+  for (i; i < length; i++)
     converted_key = HASH_RADIX * converted_key + (int)key[i];
 
   return ((hash->param_a * converted_key + hash->param_b) % hash->param_p) % hash->table_size;

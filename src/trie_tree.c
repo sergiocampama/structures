@@ -42,7 +42,8 @@ void trie_tree_add_value_for_key(trie_tree_t *trie, char *key, void *value, size
   trie_tree_t *child = parent->child;
   
   int length = strlen(key); 
-  for (int i = 0; i < length; i++) {
+  int i = 0;
+  for (i; i < length; i++) {
     if (child == NULL) {
       //Create first node in parent
       child = trie_tree_create(key[i]);
@@ -70,8 +71,9 @@ void *trie_tree_get_value_for_key(trie_tree_t *trie, char *key)
   trie_tree_t *parent = trie;
   trie_tree_t *child = parent->child;
 
-  int length = strlen(key); 
-  for (int i = 0; i < length; i++) {
+  int length = strlen(key);
+  int i = 0;
+  for (i; i < length; i++) {
     
     while(child != NULL && child->key != key[i]) {
       child = child->sibling;
