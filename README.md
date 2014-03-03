@@ -6,6 +6,7 @@ This is a collection of basic structures for academic purposes. These are the im
 1. Linked List
 2. Hash
 3. Trie Tree
+4. Binary Search Tree
 
 Linked List
 -----------
@@ -23,6 +24,11 @@ Trie Tree
 ---------
 
 The trie tree structure works very much like a hash, but the storage mechanism is more closely related to a tree. It supports void pointer values as well.
+
+Binary Search Tree
+---------
+
+The binary search tree supports adding and deleting nodes, and finding by key, successors, predecessors, maximums and minimums.
 
 Usage
 =====
